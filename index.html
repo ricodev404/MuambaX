@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MuambaX — encontre, compare e economize.">
+  <title>MuambaX — Compare preços e encontre ofertas</title>
+  <style>
+:root{--orange:#ff7a00;--orange2:#ff9a1f;--navy:#0b1628;--navy2:#132640;--ink:#101827;--muted:#667085;--bg:#f4f6f9;--card:#fff;--line:#e5e9f0;--green:#159957;--shadow:0 10px 28px rgba(11,22,40,.08);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select{font:inherit}a{text-decoration:none;color:inherit}
+.topbar{background:var(--navy);color:#fff;padding:8px 20px;text-align:center;font-size:12px;font-weight:650}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-inner{max-width:1480px;margin:auto;display:flex;align-items:center;gap:18px;padding:8px 20px}
+.brand{display:flex;align-items:center;width:190px;height:62px;flex:0 0 190px}.brand img{width:180px;height:60px;object-fit:contain}
+.search{height:48px;flex:1;display:flex;background:#f2f4f7;border:2px solid transparent;border-radius:14px;overflow:hidden;max-width:900px}.search:focus-within{border-color:var(--orange);background:#fff}.search input{flex:1;border:0;outline:0;background:transparent;padding:0 16px;font-size:15px}.search button{border:0;background:var(--orange);color:#fff;padding:0 24px;font-weight:900;cursor:pointer}.search button:hover{background:#e86d00}
+.header-actions{margin-left:auto}.header-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:850}.header-btn:hover{border-color:var(--orange);color:var(--orange)}
+.layout{max-width:1480px;margin:auto;display:grid;grid-template-columns:238px minmax(0,1fr);gap:20px;padding:20px}
+aside{position:sticky;top:82px;height:calc(100vh - 102px);overflow:auto;background:linear-gradient(180deg,var(--navy),#101f35);color:#fff;border-radius:20px;padding:18px 12px;box-shadow:var(--shadow)}
+.side-title{font-size:18px;font-weight:950;padding:2px 10px 5px}.side-sub{font-size:12px;color:#9fb0c7;padding:0 10px 13px}.dept{width:100%;display:flex;align-items:center;gap:10px;border:0;background:transparent;color:#e8edf5;padding:11px 10px;border-radius:11px;cursor:pointer;text-align:left;font-weight:700}.dept:hover,.dept.active{background:rgba(255,122,0,.15);color:#fff}.dept.active{box-shadow:inset 3px 0 var(--orange)}.dept span:first-child{width:24px;text-align:center}
+.side-bottom{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);text-align:center}.side-bottom img{width:150px;height:70px;object-fit:contain}.side-bottom small{display:block;color:#9fb0c7;font-size:11px}
+main{min-width:0}.hero{min-height:220px;background:linear-gradient(120deg,var(--navy),#193253 65%,#244365);border-radius:22px;padding:28px 32px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden;position:relative;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:360px;height:360px;right:-150px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,0,.42),transparent 65%)}.hero h1{font-size:clamp(28px,4vw,46px);line-height:1.02;margin:0 0 10px;max-width:720px}.hero h1 b{color:var(--orange)}.hero p{margin:0;color:#d8e2ef;max-width:680px;line-height:1.55}.hero-logo{width:220px;height:145px;object-fit:contain;z-index:1;filter:drop-shadow(0 12px 20px rgba(0,0,0,.25))}
+.toolbar{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:10px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}.toolbar select,.toolbar input{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;outline:0}.toolbar select:focus,.toolbar input:focus{border-color:var(--orange)}.toolbar input{min-width:220px}.result-count{margin-left:auto;color:var(--muted);font-size:13px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 13px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.product{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 5px 18px rgba(11,22,40,.04);display:flex;flex-direction:column;min-width:0;transition:.18s}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.product-img{height:180px;background:#f3f5f7;display:flex;align-items:center;justify-content:center;position:relative}.product-img img{width:100%;height:100%;object-fit:contain;padding:14px}.badge{position:absolute;left:9px;top:9px;background:var(--orange);color:#fff;font-size:10px;font-weight:950;padding:6px 8px;border-radius:8px}.product-body{padding:13px;display:flex;flex-direction:column;flex:1}.product h3{font-size:15px;line-height:1.35;margin:0 0 7px}.store{font-size:11px;color:var(--muted);margin-bottom:10px}.price-line{display:flex;align-items:baseline;gap:7px}.price{font-size:21px;font-weight:950;color:var(--navy)}.old{font-size:11px;color:#98a2b3;text-decoration:line-through}.best{font-size:11px;color:var(--green);font-weight:900;margin:5px 0 11px}.buy{margin-top:auto;border:0;background:var(--orange);color:#fff;font-weight:900;border-radius:10px;padding:10px;text-align:center}.buy:hover{background:#e96d00}
+.empty{grid-column:1/-1;background:#fff;border:1px dashed #cbd3df;border-radius:18px;padding:42px;text-align:center;color:var(--muted)}
+.compare-box{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.compare-box h3{margin:0 0 10px}.compare-row{display:grid;grid-template-columns:1.4fr .8fr .8fr .5fr;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:13px}.compare-row.header{border-top:0;font-weight:900;color:var(--muted);font-size:10px;text-transform:uppercase}.compare-price{font-weight:950}.compare-low{color:var(--green);font-weight:900}
+footer{background:var(--navy);color:#fff;margin-top:0}.footer-inner{max-width:1480px;margin:auto;padding:32px 20px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}.footer-logo{width:175px;height:65px;object-fit:contain;margin-bottom:6px}footer p,footer li{color:#aebbd0;font-size:12px;line-height:1.6}footer ul{list-style:none;padding:0;margin:0}footer li{margin:6px 0}.footer-title{font-weight:900;margin-bottom:8px}.copy{border-top:1px solid rgba(255,255,255,.1);padding:13px 20px;text-align:center;color:#8f9db2;font-size:11px}
+dialog{border:0;border-radius:20px;padding:0;width:min(680px,calc(100% - 24px));box-shadow:0 30px 80px rgba(0,0,0,.3)}dialog::backdrop{background:rgba(4,10,20,.65)}.modal{padding:22px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h2{margin:0}.close{border:0;background:#f1f3f6;border-radius:10px;width:38px;height:38px;cursor:pointer}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.form label{font-size:12px;font-weight:800;color:#475467}.form input,.form select{width:100%;margin-top:5px;border:1px solid var(--line);border-radius:10px;padding:11px;outline:0}.form input:focus,.form select:focus{border-color:var(--orange)}.full{grid-column:1/-1}.save{grid-column:1/-1;border:0;background:var(--orange);color:#fff;border-radius:11px;padding:12px;font-weight:900;cursor:pointer}.note{font-size:12px;color:var(--muted);margin:10px 0 0}
+@media(max-width:1150px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:850px){.header-actions{display:none}.header-inner{gap:8px;padding:7px 12px}.brand{width:110px;min-width:110px;height:52px}.brand img{width:105px;height:50px}.layout{display:block;padding:12px}.layout aside{display:flex;position:relative;top:auto;height:auto;overflow-x:auto;overflow-y:hidden;border-radius:14px;padding:8px;margin-bottom:12px;gap:5px;align-items:center}.side-title,.side-sub,.side-bottom{display:none}.dept{flex:0 0 auto;width:auto;padding:9px 11px;white-space:nowrap}.hero{min-height:190px;padding:22px}.hero-logo{width:140px;height:100px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.topbar{font-size:10px}.search{height:44px}.search button{padding:0 14px;font-size:13px}.search input{font-size:13px}.hero-logo{display:none}.hero{min-height:auto;padding:21px}.hero h1{font-size:31px}.products{grid-template-columns:1fr 1fr;gap:10px}.product-img{height:145px}.product-body{padding:10px}.price{font-size:18px}.product h3{font-size:13px}.toolbar{padding:8px}.toolbar input{min-width:0;flex:1}.result-count{width:100%;margin-left:0}.compare-row{grid-template-columns:1.3fr .7fr .7fr}.compare-row>:last-child{display:none}.footer-inner{grid-template-columns:1fr}.form{grid-template-columns:1fr}.full{grid-column:auto}}
+
+/* MuambaX visual polish */
+.hero-pro{min-height:265px;padding:30px 34px;background:linear-gradient(120deg,#09192c 0%,#102b48 62%,#183b5b 100%);isolation:isolate}
+.hero-copy{position:relative;z-index:3;max-width:610px}.hero-kicker{font-size:11px;font-weight:950;letter-spacing:1.4px;color:#ff9a1f;margin-bottom:10px}.hero-pro h1{font-size:42px;margin-bottom:12px}.hero-pro p{font-size:14px;max-width:590px}.hero-cta{margin-top:18px;border:0;border-radius:10px;background:var(--orange);color:#fff;font-weight:950;padding:12px 18px;cursor:pointer}.hero-cta span{font-size:21px;vertical-align:-2px;margin-left:10px}.hero-art{position:absolute;right:-4px;bottom:-12px;width:520px;height:250px;z-index:1;pointer-events:none}.container-art{position:absolute;right:30px;bottom:15px;width:350px;height:125px;border-radius:5px;background:linear-gradient(180deg,#17354d,#0b2338);border:3px solid #274861;box-shadow:0 18px 35px rgba(0,0,0,.3);transform:skewY(-1deg)}.container-art:before,.container-art:after{content:"";position:absolute;top:0;bottom:0;width:2px;background:#31536a}.container-art:before{left:28px}.container-art:after{right:28px}.container-x{font-weight:1000;font-size:80px;color:#ff7a00;opacity:.95;position:absolute;right:125px;top:15px;line-height:1}.box-art{position:absolute;background:#f4f0e6;color:#15283d;font-weight:1000;width:72px;height:58px;padding-top:18px;text-align:center;box-shadow:0 9px 15px rgba(0,0,0,.25);z-index:3}.box-a{right:65px;bottom:5px;transform:rotate(7deg)}.box-b{right:335px;bottom:28px;transform:rotate(-8deg);background:#ff8a14}.drone-art{position:absolute;right:265px;top:20px;font-size:40px;color:#c7d7e8;transform:rotate(-15deg)}.plane-art{position:absolute;right:25px;top:10px;font-size:62px;color:#e7edf5;transform:rotate(-8deg);opacity:.9}
+.top-dashboard{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.info-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;min-height:76px;box-shadow:0 3px 12px rgba(11,22,40,.03)}.info-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:#fff1e4;color:var(--orange);font-size:24px;font-weight:900}.info-card strong{display:block;font-size:14px}.info-card span{display:block;color:var(--muted);font-size:11px;line-height:1.35;margin-top:3px}
+@media(min-width:1100px){main{position:relative}.top-dashboard{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:850px){.hero-pro{min-height:230px}.hero-pro h1{font-size:32px}.hero-art{opacity:.35;right:-120px}.top-dashboard{grid-template-columns:1fr}.info-card{min-height:64px}}
+@media(max-width:560px){.hero-pro{padding:22px}.hero-pro h1{font-size:30px}.hero-kicker{font-size:9px}.hero-cta{width:100%}.hero-art{display:none}}
+
+.utility-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:14px;margin-top:16px}.utility-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px}.utility-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:14px}.utility-head span{color:var(--orange);font-size:20px}.recent-list{display:grid;grid-template-columns:1fr 1fr;gap:5px}.recent-list button{border:0;background:#f7f8fa;border-radius:9px;text-align:left;padding:9px 10px;color:#344054;font-size:11px;cursor:pointer}.recent-list button b{float:right;color:#98a2b3}.not-found p{font-size:12px;color:var(--muted);margin:4px 0 11px}.not-found button{width:100%;border:0;background:var(--navy);color:#fff;border-radius:10px;padding:10px;font-weight:900;cursor:pointer}.not-found button:hover{background:#172f50}
+@media(max-width:700px){.utility-grid{grid-template-columns:1fr}.recent-list{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="topbar">🔥 MuambaX — encontre, compare e economize nas melhores ofertas.</div>
+
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="MuambaX">
+        <img src="muambax-logo.png" alt="MuambaX">
+      </a>
+
+      <form class="search" id="searchForm">
+        <input id="searchInput" type="search" placeholder="O que você está procurando? Ex.: celular, TV, fone..." autocomplete="off">
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div class="header-actions">
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="side-title">Departamentos</div>
+      <div class="side-sub">Encontre produtos por categoria</div>
+      <button class="dept active" data-dept="Todos"><span>⌂</span>Todos os produtos</button>
+      <button class="dept" data-dept="Eletrônicos"><span>📱</span>Eletrônicos</button>
+      <button class="dept" data-dept="Móveis"><span>🛋️</span>Móveis</button>
+      <button class="dept" data-dept="Decoração"><span>🏠</span>Decoração</button>
+      <button class="dept" data-dept="Casa"><span>🍳</span>Casa e Cozinha</button>
+      <button class="dept" data-dept="Informática"><span>💻</span>Informática</button>
+      <button class="dept" data-dept="Games"><span>🎮</span>Games</button>
+      <button class="dept" data-dept="Celulares"><span>📲</span>Celulares</button>
+      <button class="dept" data-dept="Moda"><span>👟</span>Moda</button>
+      <button class="dept" data-dept="Beleza"><span>✨</span>Beleza</button>
+      <button class="dept" data-dept="Automotivo"><span>🚗</span>Automotivo</button>
+      <button class="dept" data-dept="Ferramentas"><span>🛠️</span>Ferramentas</button>
+      <button class="dept" data-dept="Pet"><span>🐶</span>Pet</button>
+
+      <div class="side-bottom">
+        <img src="muambax-logo.png" alt="MuambaX">
+        <small>Achou. Comparou. Economizou.</small>
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero hero-pro">
+        <div class="hero-copy">
+          <div class="hero-kicker">MUAMBAX • COMPARADOR DE PREÇOS</div>
+          <h1>Encontre o <b>melhor preço</b><br>antes de comprar!</h1>
+          <p>Compare preços de várias lojas e encontre ofertas com rapidez. O visitante escolhe a melhor oferta e segue pelo seu link.</p>
+          <button class="hero-cta" onclick="document.getElementById('searchInput').focus()">Comece a buscar <span>›</span></button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="container-art"><div class="container-x">X</div></div>
+          <div class="box-art box-a">MX</div><div class="box-art box-b">MX</div>
+          <div class="drone-art">✦</div><div class="plane-art">✈</div>
+        </div>
+      </section>
+
+      <div class="top-dashboard">
+        <div class="info-card"><div class="info-icon">⌕</div><div><strong>Busca rápida</strong><span>Encontre o produto que você procura em segundos.</span></div></div>
+        <div class="info-card"><div class="info-icon">◆</div><div><strong>Menor preço</strong><span>Destaque para a melhor oferta cadastrada.</span></div></div>
+        <div class="info-card"><div class="info-icon">▣</div><div><strong>Várias lojas</strong><span>Compare Shopee, Mercado Livre e muito mais.</span></div></div>
+      </div>
+
+      <div class="muambax-live-status" style="display:flex;align-items:center;gap:7px;margin:8px 0;color:#667085;font-size:11px"><span style="width:7px;height:7px;border-radius:50%;background:#22a06b"></span>Conectado ao banco de ofertas MuambaX</div><div class="toolbar">
+        <select id="sort">
+          <option value="relevance">Mais relevantes</option>
+          <option value="lowest">Menor preço</option>
+          <option value="highest">Maior preço</option>
+          <option value="name">Nome A–Z</option>
+        </select>
+        <input id="quickFilter" type="text" placeholder="Filtrar resultados...">
+        <span class="result-count" id="count"></span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;font-size:12px"><b>🔎 Busca rápida</b><br><span style="color:var(--muted)">Encontre por nome ou categoria.</span></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;font-size:12px"><b>💰 Menor preço</b><br><span style="color:var(--muted)">Destaque para a melhor oferta.</span></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;font-size:12px"><b>🛒 Várias lojas</b><br><span style="color:var(--muted)">Shopee, Mercado Livre e outras.</span></div>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <h2 id="sectionTitle">Achadinhos em destaque</h2>
+          <p id="sectionSub">Produtos cadastrados por você.</p>
+        </div>
+      </div>
+
+      <section class="products" id="products"></section>
+
+      <div class="utility-grid">
+        <div class="utility-card">
+          <div class="utility-head"><strong>Buscas recentes</strong><span>⌕</span></div>
+          <div class="recent-list">
+            <button onclick="quickSearch('iphone 15 128gb')">iPhone 15 128GB <b>×</b></button>
+            <button onclick="quickSearch('fone bluetooth')">fone bluetooth <b>×</b></button>
+            <button onclick="quickSearch('air fryer')">air fryer <b>×</b></button>
+            <button onclick="quickSearch('smart tv 50')">smart TV 50 <b>×</b></button>
+          </div>
+        </div>
+      </div>
+
+      <section class="compare-box">
+        <h3>Como aparece uma comparação</h3>
+        <div class="compare-row header">
+          <div>Produto</div><div>Loja</div><div>Preço</div><div></div>
+        </div>
+        <div id="compareRows"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="muambax-logo.png" alt="MuambaX">
+        <p>O seu atalho para encontrar produtos, comparar preços e acessar ofertas.</p>
+      </div>
+      <div>
+        <div class="footer-title">Departamentos</div>
+        <ul><li>Eletrônicos</li><li>Móveis</li><li>Decoração</li><li>Casa e Cozinha</li></ul>
+      </div>
+      <div>
+        <div class="footer-title">Lojas</div>
+        <ul><li>Shopee</li><li>Mercado Livre</li><li>Amazon</li><li>Outras lojas</li></ul>
+      </div>
+      <div>
+        <div class="footer-title">MuambaX</div>
+        <ul><li>Sobre o site</li><li>Como funciona</li><li>Instagram</li><li>Contato</li></ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MuambaX — Links podem ser de afiliado. Preços e disponibilidade podem mudar nas lojas.</div>
+  </footer>
+<script>
+const API_URL = "https://muambax-api.ricardorodrigues0671.workers.dev";
+let products = [];
+let activeDept = "Todos";
+let query = "";
+let loading = false;
+
+const $ = id => document.getElementById(id);
+const money = v => {
+  const n = Number(v);
+  return Number.isFinite(n) ? n.toLocaleString("pt-BR", {style:"currency",currency:"BRL"}) : "—";
+};
+const textVal = (o, names, fallback="") => {
+  for (const n of names) if (o && o[n] !== undefined && o[n] !== null && o[n] !== "") return o[n];
+  return fallback;
+};
+const linkedId = v => Array.isArray(v) ? (v[0]?.id ?? null) : (v && typeof v === "object" ? v.id : v);
+function escapeHtml(s){return String(s ?? "").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function escapeAttr(s){return String(s ?? "").replace(/"/g,"&quot;");}
+function placeholder(name){
+  const initials = String(name||"MX").split(" ").slice(0,2).map(x=>x[0]).join("").toUpperCase();
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450"><rect width="100%" height="100%" fill="#eef1f5"/><circle cx="300" cy="175" r="70" fill="#ff7a00" opacity=".16"/><text x="300" y="195" text-anchor="middle" font-family="Arial" font-size="58" font-weight="800" fill="#0b1628">${initials}</text><text x="300" y="285" text-anchor="middle" font-family="Arial" font-size="20" fill="#667085">Foto do produto</text></svg>`);
+}
+
+function parseMoney(value){
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  if (value === null || value === undefined) return 0;
+  let s=String(value).trim().replace(/[R$\s]/g,"");
+  if(!s) return 0;
+  if(s.includes(",") && s.includes(".")) s=s.replace(/\./g,"").replace(",",".");
+  else if(s.includes(",")) s=s.replace(",",".");
+  const n=Number(s);
+  return Number.isFinite(n) ? n : 0;
+}
+function normalizeUrl(value){
+  if(!value || value==="#" ) return "";
+  let u=String(value).trim();
+  if(!u) return "";
+  return /^https?:\/\//i.test(u) ? u : "https://"+u;
+}
+function linkedRowIds(value){
+  if(Array.isArray(value)) return value.map(x=>String(x?.id ?? x?.value ?? x)).filter(Boolean);
+  if(value && typeof value==="object") return [String(value.id ?? value.value ?? "")].filter(Boolean);
+  return value==null || value==="" ? [] : [String(value)];
+}
+
+async function loadProducts(search=""){
+  loading=true;
+  render();
+  try{
+    const res=await fetch(`${API_URL}/?q=${encodeURIComponent(search)}`);
+    const data=await res.json();
+    if(!res.ok || data.error) throw new Error(data.error || "Erro na API");
+
+    const rawProducts=Array.isArray(data.products)?data.products:[];
+    const rawOffers=Array.isArray(data.offers)?data.offers:[];
+
+    products=rawProducts.map(p=>{
+      const pid=String(p.id);
+
+      const offers=rawOffers
+        .filter(o=>linkedRowIds(o["Produto"] ?? o["produto"]).includes(pid))
+        .map(o=>{
+          const price=parseMoney(textVal(o,["Preço","Preco","preço","preco"],0));
+          const oldPrice=parseMoney(textVal(o,["Preço anterior","Preco anterior","preço anterior"],0));
+          return {
+            id:o.id,
+            store:textVal(o,["Loja","loja"],"Loja"),
+            price,
+            oldPrice,
+            shipping:parseMoney(textVal(o,["Frete","frete"],0)),
+            image:textVal(o,["Img da oferta","Imagem da oferta","imagem da oferta"],""),
+            coupon:textVal(o,["Cupom","cupom"],""),
+            discount:parseMoney(textVal(o,["Desconto","Desconto %","desconto"],0)),
+            available:textVal(o,["Disponível","Disponivel","disponível","disponivel"],true),
+            url:normalizeUrl(textVal(o,["Link afiliado","link afiliado","Link Afiliado","URL","Url"],""))
+          };
+        })
+        .filter(o=>o.available!==false && String(o.available).toLowerCase()!=="false")
+        .sort((a,b)=>a.price-b.price);
+
+      const best=offers.find(o=>o.price>0) || offers[0];
+
+      return {
+        id:p.id,
+        name:textVal(p,["Nome","nome","Produto","produto","Título","Titulo"],"Produto"),
+        dept:textVal(p,["Categoria","categoria","Departamento","departamento"],"Outros"),
+        brand:textVal(p,["Marca","marca"],""),
+        model:textVal(p,["Modelo","modelo"],""),
+        description:textVal(p,["Descrição","Descricao","descrição"],""),
+        image:textVal(p,["Imagem","imagem","Imagem principal","Imagem Principal"],best?.image||""),
+        offers,
+        price:best?.price || 0,
+        oldPrice:best?.oldPrice || 0,
+        store:best?.store || "—",
+        url:best?.url || ""
+      };
+    });
+  }catch(err){
+    console.error("MuambaX:",err);
+    products=[];
+  }finally{
+    loading=false;
+    render();
+  }
+}
+
+function filtered(){
+  let list = products.filter(p => activeDept === "Todos" || String(p.dept).toLowerCase() === String(activeDept).toLowerCase());
+  const sort = $("sort").value;
+  if(sort === "lowest") list.sort((a,b)=>(a.price||Infinity)-(b.price||Infinity));
+  if(sort === "highest") list.sort((a,b)=>(b.price||0)-(a.price||0));
+  if(sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name,"pt-BR"));
+  return list;
+}
+
+function render(){
+  const list=filtered();
+  $("count").textContent = loading ? "Carregando..." : `${list.length} produto${list.length===1?"":"s"}`;
+  $("sectionTitle").textContent = query ? `Resultados para “${query}”` : (activeDept === "Todos" ? "Achadinhos em destaque" : activeDept);
+  $("sectionSub").textContent = loading ? "Consultando ofertas..." : (list.length ? "Compare as ofertas e escolha o menor preço." : "Nenhum produto encontrado no Baserow.");
+  $("products").innerHTML = loading ? `<div class="empty">⏳<br><br><strong>Buscando ofertas...</strong></div>` : list.length ? list.map(p=>{
+    const best=p.offers[0];
+    const stores=p.offers.length;
+    return `<article class="product">
+      <div class="product-img"><span class="badge">${escapeHtml(best?.store||"Oferta")}</span><img src="${escapeAttr(p.image||best?.image||placeholder(p.name))}" alt="${escapeAttr(p.name)}" onerror="this.src='${placeholder(p.name)}'"></div>
+      <div class="product-body">
+        <h3>${escapeHtml(p.name)}</h3>
+        <div class="store">${escapeHtml(p.dept)}${p.brand?` · ${escapeHtml(p.brand)}`:""}</div>
+        <div class="price-line"><span class="price">${money(p.price)}</span>${p.oldPrice>p.price?`<span class="old">${money(p.oldPrice)}</span>`:""}</div>
+        <div class="best">✓ Menor preço · ${stores} loja${stores===1?"":"s"}</div>
+        <a class="buy" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer sponsored">Ver oferta</a>
+      </div>
+    </article>`;
+  }).join("") : `<div class="empty">🔎<br><br><strong>Nenhum produto encontrado.</strong><br>Cadastre produtos e ofertas no Baserow.</div>`;
+
+  $("compareRows").innerHTML = list.slice(0,8).map(p=>{
+    const offers=p.offers||[];
+    return `<div class="compare-row"><div><strong>${escapeHtml(p.name)}</strong></div><div>${offers.map(o=>escapeHtml(o.store)).join(" · ")||"—"}</div><div class="compare-price">${money(p.price)}</div><div class="compare-low">MENOR</div></div>`;
+  }).join("");
+}
+
+$("searchForm").addEventListener("submit",e=>{e.preventDefault();query=$("searchInput").value.trim();loadProducts(query);});
+$("quickFilter").addEventListener("input",e=>{query=e.target.value.trim();$("searchInput").value=query;loadProducts(query);});
+$("sort").addEventListener("change",render);
+
+document.querySelectorAll(".dept").forEach(btn=>btn.addEventListener("click",()=>{
+  activeDept=btn.dataset.dept;
+  document.querySelectorAll(".dept").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}));
+
+// O botão de cadastro é removido da área pública; produtos são cadastrados no Baserow.
+const addBtn=$("addBtn");
+if(addBtn) addBtn.remove();
+
+function quickSearch(value){query=value;$("searchInput").value=value;$("quickFilter").value=value;loadProducts(value);window.scrollTo({top:0,behavior:"smooth"});}
+
+loadProducts("");
+</script>
+</body>
+</html>
